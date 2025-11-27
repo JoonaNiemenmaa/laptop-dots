@@ -1,0 +1,16 @@
+set {
+	$foreground #839496
+	$background #002b36
+
+	$black #073642
+	$bblack #002b36
+
+	$blue #268bd2
+
+	$yellow #b58900
+
+	$white #eee8d5
+	$bwhite #fdf6e3
+
+	$transparent #00000000
+}

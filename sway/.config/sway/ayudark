@@ -1,0 +1,24 @@
+set {
+	$foreground #bfbdb6
+	$background #0b0e14
+
+	$black "#1e232b"
+	$red "#ea6c73"
+	$green "#7fd962"
+	$yellow "#f9af4f"
+	$blue "#53bdfa"
+	$magenta "#cda1fa"
+	$cyan "#90e1c6"
+	$white "#c7c7c7"
+
+	$bblack = "#686868"
+	$bred = "#f07178"
+	$bgreen = "#aad94c"
+	$byellow = "#ffb454"
+	$bblue = "#59c2ff"
+	$bmagenta = "#d2a6ff"
+	$bcyan = "#95e6cb"
+	$bwhite = "#ffffff"
+
+	$transparent #00000000
+}

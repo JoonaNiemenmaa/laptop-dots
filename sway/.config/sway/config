@@ -4,7 +4,7 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-font JetBrainsMono Nerd Font Mono 12
+font BlexMono Nerd Font 12
 
 ### Variables
 #
@@ -29,9 +29,10 @@ for_window [class=Godot] floating enable
 for_window [class=asteroids] floating enable
 
 exec_always {
-	#gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"
-	gsettings set org.gnome.desktop.interface gtk-theme "Solarized-Dark"
-	gsettings set org.gnome.desktop.interface icon-theme "Solarized-Dark-Blue-Numix"
+	gsettings set org.gnome.desktop.interface gtk-theme "ayu-dark"
+	#gsettings set org.gnome.desktop.interface gtk-theme "Solarized-Dark"
+	gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
+	#gsettings set org.gnome.desktop.interface icon-theme "Solarized-Dark-Blue-Numix"
 	gsettings set org.gnome.desktop.interface cursor-theme "Bibata-Modern-Classic"
 }
 
@@ -45,7 +46,10 @@ set $files nemo
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #output * bg /home/joona/dotfiles/wallpapers/donquixote_wallpaper.png fill
-output * bg /home/joona/dotfiles/wallpapers/sea1_solarized.png fill
+#output * bg /home/joona/dotfiles/wallpapers/sea1_solarized.png fill
+#output * bg /home/joona/dotfiles/wallpapers/mountain_wallpaper.jpg fill
+#output * bg /home/joona/dotfiles/wallpapers/armoredcore_wallpaper.png fill
+output * bg /home/joona/dotfiles/wallpapers/youclair_wallpaper.png fill
 #
 # Example configuration:
 #
@@ -75,13 +79,13 @@ exec swayidle -w \
 #
 # Example configuration:
 #
-#   input type:touchpad {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
+input type:touchpad {
+  dwt enabled
+  tap enabled
+  natural_scroll enabled
+  middle_emulation enabled
+}
+
 input type:keyboard {
 	xkb_layout "fi"
 }
@@ -119,6 +123,7 @@ input type:keyboard {
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    #bindsym $mod+Shift+e exec echo "poweroff\nreboot\nswaymsg exit" | wofi --show=dmenu | sh
 #
 # Moving around:
 #
@@ -245,26 +250,12 @@ bindsym $mod+r mode "resize"
     # Special key to take a screenshot with grim
     bindsym Print exec grim
 
-set {
-	$foreground #839496
-	$background #002b36
-
-	$black #073642
-	$bblack #002b36
-
-	$blue #268bd2
-
-	$yellow #b58900
-
-	$white #eee8d5
-	$bwhite #fdf6e3
-
-	$transparent #00000000
-}
+include ayudark
 
 default_border pixel 2
+#gaps inner 6
 
-client.focused $blue $blue $foreground
+client.focused $yellow $yellow $foreground $yellow
 client.unfocused $black $black $foreground
 
 #
@@ -274,33 +265,28 @@ client.unfocused $black $black $foreground
 bar {
     position top
 
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
     status_command i3status-rs
 
-    separator_symbol "|"
+    separator_symbol "\\"
 
-    tray_output none
+    #tray_output none
 
-    font JetBrains Mono Nerd Font 12
-    #font pango:DejaVu Sans Mono, FontAwesome 12
+    font BlexMono Nerd Font Bold 12
 
     colors {
-        statusline $white
-        separator $white
-        background $background
+        statusline $yellow
+        separator $yellow
+        background $background        
 
-		#					border		background		text
-        #active_workspace 	$white 		$background 	$foreground
+		    #border		background		text
+        active_workspace 	$white 		$background 	$foreground
         inactive_workspace 	$background $background 	$foreground
 
-        focused_workspace 	$blue 		$background 	$foreground
+        focused_workspace 	$yellow 	$background 	$foreground
         urgent_workspace 	#2f343a		#900000 		#ffffff
     }
 }
 
 #bar swaybar_command waybar
-
-default_border pixel
 
 include /etc/sway/config.d/*
